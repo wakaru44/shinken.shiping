@@ -1,0 +1,5 @@
+archive
+*swp
+*log
+tmp
+.creds*
