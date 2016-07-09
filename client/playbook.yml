@@ -1,0 +1,17 @@
+---
+- hosts: shinkenclient
+  become: yes
+  user: rootf
+  # TODO: Initialize locale with  sudo locale-gen en_GB.UTF-8
+  vars:
+    shinkenmaster: shinkenmaster
+  tasks: 
+  - include: tasks/snmpd.yml
+
+  - name: setup aws creds
+    command: echo {{ creds }} > ~/FAKECREDS
+    
+  handlers:
+  - name: something stupid
+    service: name=puppet state=stopped
+

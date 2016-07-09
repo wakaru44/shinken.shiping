@@ -1,0 +1,18 @@
+
+  - name: Install SNMP Daemon
+    apt: pkg={{item}} state=installed update_cache=true
+    with_items:
+      - vim-nox
+      - snmpd
+
+  - name: fix locale
+    become: yes
+    command: update-locale LANG=en_GB.UTF-8 LC_MESSAGES=POSIX
+
+  -name: Configure ipv6
+    #TODO the bloody thing with the config file comminting and uncommenting stuff
+
+  - name: restart SNMPD service
+    become: yes
+    command: service snmpd restart
+    # TODO: add the submodules into my repo, so they can be easily downloaded and installed.
